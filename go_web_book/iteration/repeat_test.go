@@ -11,8 +11,20 @@ func TestRepeat(t *testing.T) {
 	}
 
 	t.Run("repeat n (>0) times", func(t *testing.T) {
-		repeated := Repeat("a")
+		repeated := Repeat("a", 5)
 		expected := "aaaaa"
+		assertCorrectMessage(t, repeated, expected)
+	})
+
+	t.Run("repeat n (=0) times", func(t *testing.T) {
+		repeated := Repeat("a", 0)
+		expected := ""
+		assertCorrectMessage(t, repeated, expected)
+	})
+
+	t.Run("repeat n (<0) times", func(t *testing.T) {
+		repeated := Repeat("a", -4)
+		expected := ""
 		assertCorrectMessage(t, repeated, expected)
 	})
 }
